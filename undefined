@@ -1,0 +1,18 @@
+```scala
+import scala.reflect.ClassTag
+
+class MyClass[T: ClassTag](val value: T) {
+  def getValue: T = value
+  def getTypeTag: ClassTag[T] = implicitly[ClassTag[T]]
+}
+
+object Main extends App {
+  val myInt = new MyClass(5)
+  val myString = new MyClass("hello")
+
+  println(myInt.getValue) // Output: 5
+  println(myString.getValue) // Output: hello
+  println(myInt.getTypeTag) //Output: Int
+  println(myString.getTypeTag) //Output: String
+}
+```
